@@ -1,0 +1,54 @@
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #333;
+  min-width: 1366px;
+  min-height: 768px;
+  overflow: auto;
+  width: 100%;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar, #app::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+html::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb, #app::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1)
+}
+
+html::-webkit-scrollbar-track, body::-webkit-scrollbar-track, #app::-webkit-scrollbar-track {
+  background: #ededed
+}
+
+.window-scroll-bar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.window-scroll-bar::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0)
+}
+
+.window-scroll-bar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.window-scroll-bar:hover::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.55)
+}
+
+.login {
+  background-image: url('../images/bg-login.jpg')
+}
+
+.anchorBL {
+  display: none !important;
+}
+
+
