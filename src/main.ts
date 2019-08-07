@@ -1,27 +1,20 @@
-import Vue from 'vue';
-// @ts-ignore
-import App from './App.vue';
-import router from './router';
-import store from './store';
-// main.ts
-import Component from 'vue-class-component';
-import apiService from '@/libs/apiService';
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './registerServiceWorker'
 
-Component.registerHooks([
-    'beforeRouteEnter',
-    'beforeRouteLeave',
-    'beforeRouteUpdate',
-]);
+// 引入的組件
+import nodata from './components/common/nodata.vue'
+import vueSelect from './components/common/vueselect.vue'
 
-Vue.config.productionTip = false;
-Vue.prototype.$apiService = apiService;
-Vue.prototype.$open = (url: any = 'https://github.com/d2-projects') => {
-    window.open(url)
-};
 
+Vue.config.productionTip = false
+Vue.component('nodata', nodata)
+Vue.component('vue-select', vueSelect)
 
 new Vue({
     router,
     store,
-    render: (h) => h(App),
-}).$mount('#app');
+    render: h => h(App)
+}).$mount('#app')

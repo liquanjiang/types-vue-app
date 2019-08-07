@@ -1,12 +1,4 @@
-# myapp
-
-#使用vue-cli3脚手架搭建typescript风格的方法和步骤
-详情及步骤可以点击： https://juejin.im/post/5ac476825188255c946be1c8
-
-# typescript作为开发语言的vue项目架构
-
-在home.vue组件中，组件的写法是采用的常规vue的写法
-在HelloWorld.vue组件中，组件的写法是采用的typescript中的class风格的写法
+# mytsapp
 
 ## Project setup
 ```
@@ -31,6 +23,11 @@ npm run test
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Run your end-to-end tests
+```
+npm run test:e2e
 ```
 
 ### Run your unit tests

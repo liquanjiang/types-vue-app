@@ -16,10 +16,11 @@
       "mocha",
       "chai"
     ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/vue/types"
+    ],
     "paths": {
-        "*": [
-            "types/*"
-        ],
       "@/*": [
         "src/*"
       ]
