@@ -11,20 +11,27 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@types/d3": "^5.7.2",
+    "@types/echarts": "^4.1.10",
+    "@types/jquery": "^3.3.31",
+    "@types/js-cookie": "^2.2.0",
+    "@types/lodash": "^4.14.136",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.6.5",
+    "d3": "^5.9.7",
+    "echarts": "^4.2.1",
+    "jquery": "^3.4.1",
+    "js-cookie": "^2.2.1",
+    "lodash": "^4.17.15",
+    "qs": "latest",
     "register-service-worker": "^1.6.2",
+    "tslint": "^5.18.0",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1",
-    "lodash": "^4.0.1",
-    "jquery": "^3.3.1",
-    "echarts": "^4.1.0",
-    "qs": "latest",
-    "js-cookie": "^2.2.0"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.0",

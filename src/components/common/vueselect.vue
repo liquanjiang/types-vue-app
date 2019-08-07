@@ -1,9 +1,9 @@
 <template>
     <div class="vue-select" :style="commonStyle" tabindex="-1"
          :class="{'gray': notSelect === true}" @blur="closeList()">
-        <div class="vue-show-content" :style="HeightStyle" @click="showList()">
-            <span class="select-names" :style="lineHeightStyle">{{selectNames}}</span>
-            <span class="triangle"></span>
+        <div class="vue-show-content" @click="showList()">
+            <span class="select-names" :style="lineHeightStyle">{{value.name ?  value.name : '请选择' }}</span>
+            <span class="triangle" :style="triangleStyle"></span>
         </div>
         <ul v-show="showUl && listArray.length > 0" class="select-ul  window-scroll-bar"
             :style="propStyles">
@@ -27,43 +27,59 @@ export default {
             selectValues: '',
             commonStyle: {
                 'width': `${parseInt(this.width)}px`,
-                'height': `${parseInt(this.height)}px`
+                'height': `${parseInt(this.height)}px`,
+                'border-color': this.borderColor
             },
             propStyles: {
-                'max-height': `${parseInt(this.maxHeight)}px`
+                'max-height': `${parseInt(this.maxHeight)}px`,
+                'border-color': this.borderColor
             },
             HeightStyle: {
                 'height': `${parseInt(this.height)}px`
             },
             lineHeightStyle: {
                 'height': `${parseInt(this.height)}px`,
-                'line-height': `${parseInt(this.height)}px`
+                'line-height': `${parseInt(this.height)}px`,
+                'color': this.fontColor
+            },
+            triangleStyle: {
+                'border-top': `6px solid ${this.borderColor}`,
+                'top': `${(parseInt(this.height) - 6) / 2}px`
             }
         }
     },
     props: {
-        outName: {
-            type: [String, Number],
-            default: '请选择'
-        },
-        outValue: {
-            type: [String, Number],
-            default: ''
+        value: {
+            type: Object,
+            default: function () {
+                return {
+                    name: '请选择',
+                    value: ''
+                }
+            }
         },
         width: {
             type: [Number, String],
-            default: 80
+            default: 120
         },
         height: {
             type: [Number, String],
             default: 24
+        },
+        borderColor: {
+            type: [String],
+            default: '#6A8EDD'
+        },
+        fontColor: {
+            type: [String],
+            default: '#333'
         },
         listArray: Array,
         namekey: {
             type: String,
             default: 'name'
         },
-        valuekey:{
+        valuekey: {
             type: String,
             default: 'value'
         },
@@ -81,13 +97,8 @@ export default {
         }
     },
     mounted () {
-        this.init()
     },
     methods: {
-        init () {
-            this.selectNames = this.outName
-            this.selectValues = this.outValue
-        },
         showList () {
             if (this.notSelect) { // 如果禁止选择，则不能下拉
                 return
@@ -102,7 +113,7 @@ export default {
                 name: this.selectNames,
                 value: this.selectValues
             }
-            this.$emit('sendValue', result)
+            this.$emit('input', result)
         },
         closeList () {
             this.showUl = false
