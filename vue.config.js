@@ -1,5 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const productionGzipExtensions = ['js', 'css']
 
 // 拼接路径
 function resolve (dir) {
@@ -9,21 +11,32 @@ function resolve (dir) {
 // 基础路径 注意发布到生产环境之前要先修改这里
 const isProd = process.env.NODE_ENV === 'production'
 const baseUrl = isProd ? process.env.VUE_APP_BASEURL : '/'
+const plugins = [new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    'windows.jQuery': 'jquery'
+})]
+
+const gzip = new CompressionWebpackPlugin({
+    test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+    threshold: 10240,
+    minRatio: 0.8
+})
+
+// if (isProd) {
+//     plugins.push(gzip)
+// }
 
 module.exports = {
     publicPath: baseUrl, // 根据你的实际情况更改这里
     lintOnSave: true,
+    assetsDir: 'asstes',
+    outputDir: 'mw',
     configureWebpack: { // 引入jquery
         externals: { // 引入百度地圖
             'BMap': 'BMap'
         },
-        plugins: [
-            new webpack.ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery',
-                'windows.jQuery': 'jquery'
-            })
-        ]
+        plugins: plugins
     },
     devServer: {
         publicPath: baseUrl, // 和 baseUrl 保持一致
@@ -39,12 +52,6 @@ module.exports = {
                     '^/service': ''
                 }
             },
-            /* '/master': {
-                target: 'http://10.4.106.5:8089',
-                ws: true,
-                changeOrigin: true,
-                pathRewrite: { '^/master': '' }
-            }, */
             '/master': {
                 target: 'http://10.4.138.221:8089',
                 ws: true,
