@@ -133,7 +133,7 @@ export default {
             }
             this.currentIndex = page
             this.createIndexArr(page)
-            this.$emit('input', params)
+            this.$emit('input', params, '2', 'abcd', true, [1,2,'a','d'])
         },
 
         // 选中上一页

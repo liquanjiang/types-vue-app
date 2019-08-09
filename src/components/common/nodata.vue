@@ -15,11 +15,11 @@ export default class NoData extends Vue {
     @Prop({
         type: [String, Number],
         default: 300
-    }) private size: String;
+    }) private size: String
     @Prop({
         type: String,
         default: '暂时没有数据可以显示喔...'
-    }) private text: String;
+    }) private text: String
 
     // computed 的写法
     get styleObj () {
@@ -27,6 +27,11 @@ export default class NoData extends Vue {
             width: `${this.size}px `,
             height: `${this.size}px`
         }
+    }
+
+    // 生命周期写法
+    created (): void {
+
     }
 }
 </script>

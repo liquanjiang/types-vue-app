@@ -33,6 +33,11 @@
                 <li v-for="(item, index) in array" :key="index">{{item.name}}</li>
             </ul>
         </div>
+        <div class="ul-list">
+            <ul>
+                <li v-for="(value, keys,index) in sortObj" :key="index">{{keys }} {{value}}</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -73,6 +78,14 @@ export default class Home extends Vue {
         { name: '我是数组3' },
         { name: '我是数组3' }, { name: '我是数组3' }
     ]
+    private sortObj: any = {
+        f: 5,
+        a: 1,
+        c: 2,
+        d: 3,
+        b: 4,
+        e: 6
+    }
     private pageSize: number = 10
     private pageNum: number = 1
     private pageCount: number = 50
@@ -93,12 +106,13 @@ export default class Home extends Vue {
         }
     }
 
-    private chosePage (params): void {
+    private chosePage (params: any): void {
         console.log(params)
+        console.log(arguments)
         this.pageNum = params.pageNum
     }
 
-    private message (index): void {
+    private message (index: number): void {
         switch (index) {
             case 0:
                 this.$util.showMessage('abcd', 'success')
