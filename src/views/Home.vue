@@ -1,5 +1,9 @@
 <template comments>
     <div class="home">
+        <!-- 测试绑定多个时间区域 -->
+        <div class="input-area">
+            <input type="text" @click="event1()" v-model="abc">
+        </div>
         <!-- 数据选择区域 -->
         <div class="select-div">
             <span>请选择数据</span>
@@ -90,7 +94,7 @@ export default class Home extends Vue {
     private pageNum: number = 1
     private pageCount: number = 50
 
-    private selectValues (item): void {
+    public selectValues (item): void {
         switch (item.value) {
             case 1:
                 this.array = this.array1
@@ -106,13 +110,13 @@ export default class Home extends Vue {
         }
     }
 
-    private chosePage (params: any): void {
+    public chosePage (params: any): void {
         console.log(params)
         console.log(arguments)
         this.pageNum = params.pageNum
     }
 
-    private message (index: number): void {
+    public message (index: number): void {
         switch (index) {
             case 0:
                 this.$util.showMessage('abcd', 'success')
@@ -135,6 +139,39 @@ export default class Home extends Vue {
         setTimeout(function () {
             that.$store.dispatch('hideLoading')
         }, 2000)
+    }
+
+    public event1 (): void {
+        console.log(1)
+        const a = [1, 2, 3, 4]
+        const b = [1, 2, 3, 4]
+        delete a[1]
+        this.$delete(b, 1)
+        const c = {
+            a: 1,
+            b: 2
+        }
+
+        delete c['a']
+
+        const d = {
+            a: 1,
+            b: 2
+        }
+
+        this.$delete(d, 'a')
+
+        console.log(a, b, c, d)
+        console.log(this.$data)
+
+    }
+
+    public event2 (): void {
+        console.log(2)
+    }
+
+    public event3 (): void {
+        console.log(3)
     }
 }
 </script>
