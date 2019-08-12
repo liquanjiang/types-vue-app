@@ -2,7 +2,7 @@
     <div class="home">
         <!-- 测试绑定多个时间区域 -->
         <div class="input-area">
-            <input type="text" @click="event1()" v-model="abc">
+            <input type="text" @click="event1()">
         </div>
         <!-- 数据选择区域 -->
         <div class="select-div">
@@ -37,19 +37,20 @@
                 <li v-for="(item, index) in array" :key="index">{{item.name}}</li>
             </ul>
         </div>
-        <div class="ul-list">
-            <ul>
-                <li v-for="(value, keys,index) in sortObj" :key="index">{{keys }} {{value}}</li>
-            </ul>
-        </div>
+        <HelloWorld :foo="'foo'" :bar="'bar'"></HelloWorld>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import $util from '@/libs/util'
+import HelloWorld from '../components/HelloWorld'
 
-@Component
+@Component({
+    components: {
+        HelloWorld
+    }
+})
 
 export default class Home extends Vue {
     private $util = $util

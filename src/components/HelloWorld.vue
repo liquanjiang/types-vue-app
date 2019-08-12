@@ -1,15 +1,29 @@
 <template>
     <div class="hello">
-        <h1>{{ msg }}</h1>
+        <h1>{{ foo }}{{ $attrs.name }}</h1>
+        <childCom v-bind="$attrs" v-on="$listeners"></childCom>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import childCom from './child-com'
 
-@Component
+@Component({
+    components: {
+        childCom: childCom
+    },
+    inheritAttrs: false,
+    created () {
+        console.log(this.$attrs)
+    }
+})
 export default class HelloWorld extends Vue {
-    @Prop() private msg!: string;
+    @Prop() private msg!: string
+    @Prop() private foo!: string
+    @Prop() private bar!: string
+    public obj: string = 'a'
+    public d: string = 'd'
 }
 </script>
 
