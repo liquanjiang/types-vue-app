@@ -16,7 +16,7 @@
     "@types/jquery": "^3.3.31",
     "@types/js-cookie": "^2.2.0",
     "@types/lodash": "^4.14.136",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "core-js": "^2.6.5",
     "d3": "^5.9.7",
